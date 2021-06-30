@@ -1,0 +1,199 @@
+<body>
+    <div id="maincontent">
+        <div class="top-bar">
+            <h1>Stardust: Forum for math</h1>
+            <!-- <button class="signout" onclick="myFunction1()">SignOut</button> -->
+        </div>
+        <div class="rows">
+            <div class="main">
+                <ol></ol>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="column" id="test">
+        <h2>Add a new thread</h2>
+        <h4>Enter Thread Name:</h4>
+        <textarea class="threadtitle" rows="5" cols="115"></textarea>
+        <br>
+        <h4>Enter Thread content:</h4>
+        <textarea class="threadcontent" id="threadcontent1" rows="5" cols="115"></textarea>
+        <br>
+        <br>
+        <button id="button1">Add new thread</button>
+    </div>
+    <script src="data.js"></script>
+
+    <script>
+        function myFunction1() {
+            if (document.getElementById("maincontent").style.display == "block") {
+                document.getElementById("maincontent").style.display = "none";
+                document.getElementById("signin").style.display = "block";
+            } else if (document.getElementById("maincontent").style.display == "none") {
+                document.getElementById("maincontent").style.display = "block";
+                document.getElementById("signin").style.display = "none";
+            } else {
+                document.getElementById("maincontent").style.display = "block";
+                document.getElementById("signin").style.display = "none";
+            }
+        }
+        var container = document.querySelector("ol");
+        for (let thread of threads) {
+            var html = `
+        <li class="row">
+            <a href="/thread.html?${thread.id}">
+                <h4 class="title">
+                    ${thread.title}
+                </h4>
+                <h6 class="content">
+                    ${thread.content}
+                </h6>
+                <div class="bottom">
+                    <p class="timestamp">
+                        ${new Date(thread.date).toLocaleString()}
+                    </p>
+                    <p class="comment-count">
+                        ${thread.comments.length} comments
+                    </p>
+                </div>
+            </a>
+        </li>
+        `;
+            container.insertAdjacentHTML("beforeend", html);
+        }
+                // console.log(threads);
+
+        var count = threads.length;
+console.log(count);
+                var id = count+1;
+        var thread = threads.find((t) => t.id == id);
+
+        // var header = document.querySelector(".test");
+        console.log(thread);
+        // thread.title = "test";
+        // thread.content = "ads";
+
+        // // threads.push();
+        function addThread(thread) {
+            console.log(threads);
+            var container = document.querySelector("ol");
+            var html = `
+        <li class="row">
+            <a href="/thread.html?${thread.id}">
+                <h4 class="title">
+                    ${thread.title}
+                </h4>
+                <h6 class="content">
+                    ${thread.content}
+                </h6>
+                <div class="bottom">
+                    <p class="timestamp">
+                        ${new Date(thread.date).toLocaleString()}
+                    </p>
+                    <p class="comment-count">
+                        ${thread.comments.length} comments
+                    </p>
+                </div>
+            </a>
+        </li>
+        `;
+            container.insertAdjacentHTML("beforeend", html);
+        }
+        var btn = document.getElementById("button1");
+        btn.addEventListener("click", function () {
+            console.log("I do come here!!");
+            var threadtitle = document.querySelector("textarea");
+            var threadcontent = document.getElementById("threadcontent1");
+            var content = {
+                id: count + 1,
+                title: threadtitle.value,
+                author: "Aaron",
+                date: Date.now(),
+                content: threadcontent.value,
+                comments: [
+                    {
+                        author: "Jack",
+                        date: Date.now(),
+                        content: "Hey there",
+                    },
+                ],
+            };
+            threads.push(content);
+            addThread(content);
+            //   addComment(c);
+
+            localStorage.setItem("threads", JSON.stringify(threads));
+
+        });
+    </script>
+
+
+
+    <style>
+        body {
+            margin: 10px 60px;
+        }
+
+        maincontent {
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        /* .signin {
+            margin: 150px;
+            color: black;
+            display: none;
+        } */
+
+        h1,
+        h4,
+        ol {
+            margin: 0;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        .top-bar {
+            background-color: skyblue;
+            padding: 0 40px;
+        }
+
+        .main {
+            background-color: #f6f6ef;
+            padding: 10px 15px;
+        }
+
+        .row {
+            padding: 5px 0;
+        }
+
+        .bottom {
+            display: flex;
+            color: grey;
+            font-size: 12px;
+        }
+
+        .timestamp {
+            padding-right: 10px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+        }
+    </style>
+</body>

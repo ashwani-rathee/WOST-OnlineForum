@@ -1,0 +1,123 @@
+<body>
+    <div class="signin" id="signin">
+        <h2>SignIn</h2>
+        <!-- <h3>Enter Name:</h3>
+        <textarea class="signinname"></textarea>
+        <br /> -->
+        <h3>Enter Email:</h3>
+        <textarea id="signinemail"></textarea>
+        <br />
+        <h3>Enter Password:</h3>
+        <textarea id="signinpassword"></textarea>
+        <br />
+        <button id="signinb" onclick="signinfunction()">SignIn</button>
+    </div>
+    <script src="data.js"></script>
+    <script>
+        function signinfunction() {
+            var btn = document.getElementById("signinb");
+            var id = ids.find((t) => t.id == 1);
+            var signinemail = document.getElementById("signinemail");
+            var signinpassword = document.getElementById("signinpassword");
+            btn.addEventListener("click", function () {
+                console.log("Hello there");
+                console.log(id.email);
+                console.log(signinemail.value,signinpassword.value)
+                link = `http://127.0.0.1:5500/user.html?${ids.id}`
+                link = `http://127.0.0.1:5500/user.html?1`
+                window.location.replace(link);
+                // if (document.getElementById("signin").style.display == "block") {
+                //     document.getElementById("signin").style.display = "none";
+                //     document.getElementById("maincontent").style.display = "block";
+                // } else if (document.getElementById("signin").style.display == "none") {
+                //     document.getElementById("signin").style.display = "block";
+                //     document.getElementById("maincontent").style.display = "none";
+                // } else {
+                //     document.getElementById("signin").style.display = "block";
+                //     document.getElementById("maincontent").style.display = "none";
+                // }
+                // var txt = document.querySelector('textarea');
+                // var comment = {
+                //     content: txt.value,
+                //     date: Date.now(),
+                //     author: 'Aaron'
+                // }
+                // addComment(comment);
+                // txt.value = '';
+                // thread.comments.push(comment);
+                // localStorage.setItem("threads", JSON.stringify(threads));
+            });
+        }
+    </script>
+
+<br>
+
+<div class="signup" id="signup">
+    <h2>SignUp</h2>
+
+    <!-- <h3>Enter Name:</h3>
+    <textarea class="signinname"></textarea> -->
+    <!-- <br /> -->
+    <h3>Enter Email:</h3>
+    <textarea id="signupemail"></textarea>
+    <br />
+    <h3>Enter Password:</h3>
+    <textarea id="signuppassword"></textarea>
+    <br />
+    <button id="signupb" onclick="signupfunction()">SignUp</button>
+</div>
+<script src="data.js"></script>
+<script>
+    function signupfunction() {
+        var btn1 = document.getElementById("signupb");
+        var signupemail = document.getElementById("signupemail");
+        var signuppassword = document.getElementById("signuppassword");
+        var id = ids.find((t) => t.id == 1);
+        btn1.addEventListener("click", function () {
+            console.log("Hello there");
+            console.log(id.email);
+            console.log(signupemail.value,signuppassword.value)
+            // if (document.getElementById("signin").style.display == "block") {
+            //     document.getElementById("signin").style.display = "none";
+            //     // document.getElementById("maincontent").style.display = "block";
+            // } else if (document.getElementById("signin").style.display == "none") {
+            //     document.getElementById("signin").style.display = "block";
+            //     // document.getElementById("maincontent").style.display = "none";
+            // } else {
+            //     document.getElementById("signin").style.display = "block";
+            //     // document.getElementById("maincontent").style.display = "none";
+            // }
+            // var txt = document.querySelector('textarea');
+            // var comment = {
+            //     content: txt.value,
+            //     date: Date.now(),
+            //     author: 'Aaron'
+            // }
+            // addComment(comment);
+            // txt.value = '';
+            // thread.comments.push(comment);
+            // localStorage.setItem("threads", JSON.stringify(threads));
+        
+        });
+    }
+</script>
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .signin {
+align-self: center;
+margin-left: 600px;
+margin-top: 100px;
+        }
+
+.signup{
+    align-self: center;
+    margin-left: 600px;
+}
+        h2 {
+            margin: auto;
+        }
+    </style>
+</body>
